@@ -1,4 +1,4 @@
-[<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8" />
@@ -16,7 +16,8 @@
     display: flex;
     height: 100vh;
     overflow: hidden;
-    background-image: url('https://media.giphy.com/media/3o7TKtnuHOHHUjR38Y/giphy.gif');
+    /* Imagem de fundo fixa */
+    background-image: url('https://i.imgur.com/OGCNObf.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -60,48 +61,33 @@
   .carousel {
     width: 25%;
     height: 80vh;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
     position: relative;
     border-radius: 12px;
     border: 2px solid #ff5c5c;
+    background: #222b;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+    scrollbar-width: thin;
+    scrollbar-color: #ff5c5c #222;
+  }
+  .carousel::-webkit-scrollbar {
+    width: 8px;
     background: #222;
   }
-  .carousel-track {
-    position: absolute;
-    width: 100%;
-    animation-timing-function: linear;
+  .carousel::-webkit-scrollbar-thumb {
+    background: #ff5c5c;
+    border-radius: 8px;
   }
   .carousel img {
     display: block;
-    width: 100%;
-    margin-bottom: 10px;
+    width: 90%;
+    margin: 10px auto;
     border-radius: 8px;
-  }
-  .carousel-left .carousel-track {
-    animation-name: scroll-up;
-    animation-duration: 40s;
-    animation-iteration-count: infinite;
-  }
-  .carousel-right .carousel-track {
-    animation-name: scroll-down;
-    animation-duration: 40s;
-    animation-iteration-count: infinite;
-  }
-  @keyframes scroll-up {
-    0% {
-      top: 0;
-    }
-    100% {
-      top: -50%;
-    }
-  }
-  @keyframes scroll-down {
-    0% {
-      top: -50%;
-    }
-    100% {
-      top: 0;
-    }
+    box-shadow: 0 2px 8px #0008;
   }
   .music-control {
     position: fixed;
@@ -127,16 +113,13 @@
 
 <!-- Botão de controle da música -->
 <button class="music-control" id="musicControl">Tocar Música</button>
-<!-- Áudio -->
 <audio id="backgroundMusic" loop preload="auto" src="https://www.dropbox.com/scl/fi/9vw0p8krii3munrdgsfzc/Melim-Um-Mundo-Ideal-De-Aladdin-Official-Video-1.mp3?rlkey=ycq1iukki2b3tdh8qnbzs9xah&st=wz86fxn3&raw=1"></audio>
 
 <div class="container">
 
   <!-- Carrossel esquerdo -->
-  <div class="carousel carousel-left">
-    <div class="carousel-track" id="carouselLeft">
-      <!-- imagens serão inseridas pelo JS -->
-    </div>
+  <div class="carousel" id="carouselLeft">
+    <!-- imagens JS -->
   </div>
 
   <!-- Texto central -->
@@ -153,10 +136,8 @@
   </div>
 
   <!-- Carrossel direito -->
-  <div class="carousel carousel-right">
-    <div class="carousel-track" id="carouselRight">
-      <!-- imagens serão inseridas pelo JS -->
-    </div>
+  <div class="carousel" id="carouselRight">
+    <!-- imagens JS -->
   </div>
 
 </div>
@@ -198,22 +179,22 @@
     "https://i.imgur.com/zSgqCh8.jpg"
   ];
 
-  function populateCarousel(containerId) {
+  // Esquerda: ordem normal, Direita: ordem invertida
+  function populateCarousel(containerId, imgs) {
     const container = document.getElementById(containerId);
     container.innerHTML = "";
-    for(let i=0; i<2; i++) {
-      images.forEach(src => {
-        const img = document.createElement("img");
-        img.src = src;
-        img.alt = "Foto Kaique e Laís";
-        container.appendChild(img);
-      });
-    }
+    imgs.forEach(src => {
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = "Foto Kaique e Laís";
+      container.appendChild(img);
+    });
   }
 
-  populateCarousel("carouselLeft");
-  populateCarousel("carouselRight");
+  populateCarousel("carouselLeft", images); // cima para baixo
+  populateCarousel("carouselRight", [...images].reverse()); // baixo para cima
 
+  // Música
   const music = document.getElementById("backgroundMusic");
   const btn = document.getElementById("musicControl");
 
@@ -227,4 +208,3 @@
     }
   });
 </script>
-](https://imgur.com/undefined)
