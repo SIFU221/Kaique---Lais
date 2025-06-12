@@ -52,6 +52,53 @@
     }
   </style>
 </head>
+<script>
+// filepath: c:\Users\kaiqu\OneDrive\Documentos\projetos\index.html
+function updateCounter() {
+  const startDate = new Date(2022, 0, 4, 0, 0, 0); // 4 de janeiro de 2022
+  const now = new Date();
+
+  let years = now.getFullYear() - startDate.getFullYear();
+  let months = now.getMonth() - startDate.getMonth();
+  let days = now.getDate() - startDate.getDate();
+  let hours = now.getHours() - startDate.getHours();
+  let minutes = now.getMinutes() - startDate.getMinutes();
+  let seconds = now.getSeconds() - startDate.getSeconds();
+
+  if (seconds < 0) {
+    seconds += 60;
+    minutes--;
+  }
+  if (minutes < 0) {
+    minutes += 60;
+    hours--;
+  }
+  if (hours < 0) {
+    hours += 24;
+    days--;
+  }
+  if (days < 0) {
+    const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+    days += prevMonth.getDate();
+    months--;
+  }
+  if (months < 0) {
+    months += 12;
+    years--;
+  }
+
+  document.getElementById('daysTogether').textContent =
+    `${years} ano${years !== 1 ? 's' : ''}, ` +
+    `${months} mês${months !== 1 ? 'es' : ''}, ` +
+    `${days} dia${days !== 1 ? 's' : ''}, ` +
+    `${hours} hora${hours !== 1 ? 's' : ''}, ` +
+    `${minutes} minuto${minutes !== 1 ? 's' : ''} e ` +
+    `${seconds} segundo${seconds !== 1 ? 's' : ''}`;
+}
+
+updateCounter();
+setInterval(updateCounter, 1000);
+</script>
 <body>
   <h1>Kaique ❤️ Laís</h1>
 
@@ -84,9 +131,4 @@
     Estamos juntos há <span id="daysTogether">...</span> dias!
   </div>
 
-  <div class="declaration">
-    <p>Laís, cada segundo ao seu lado transforma o mundo em um lugar mais bonito. Desde o dia 4 de janeiro de 2023, minha vida tem sido feita de sorrisos sinceros, abraços demorados e momentos que eu guardo no coração.</p>
-    <p>E agora, com o nosso noivado se aproximando, vejo com ainda mais clareza: você é o amor da minha vida. Que este contador seja só o começo da nossa história sem fim.</p>
-    <p>Te amo, hoje e sempre.</p>
-    <p>— Kaique 💍❤️</p>
-  </div>
+  
