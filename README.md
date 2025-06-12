@@ -10,25 +10,12 @@
   }
   body {
     margin: 0;
-    background: #111;
+    background: #000;
     color: #eee;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     height: 100vh;
     overflow: hidden;
-    /* Imagem de fundo fixa */
-    background-image: url('https://i.imgur.com/0sRJbDK.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: rgba(17,17,17,0.7);
-    z-index: 0;
-    pointer-events: none;
   }
   .container, .music-control {
     position: relative;
@@ -47,16 +34,19 @@
     max-width: 600px;
     text-align: center;
     line-height: 1.5;
+    font-weight: bold;
   }
   .text-center h1 {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
     color: #ff5c5c;
+    font-weight: bold;
   }
   .text-center p {
     font-size: 1.1rem;
     margin: 0.5rem 0;
     color: #ddd;
+    font-weight: bold;
   }
   .carousel {
     width: 25%;
@@ -111,6 +101,7 @@
     box-shadow: 0 0 10px #ff5c5c;
     user-select: none;
     z-index: 10;
+    font-weight: bold;
   }
   .music-control:hover {
     background: #ff3a3a;
@@ -195,7 +186,6 @@
   function populateCarousel(containerId, imgs) {
     const container = document.getElementById(containerId);
     container.innerHTML = "";
-    // Duas vezes para looping suave
     for(let i=0; i<2; i++) {
       imgs.forEach(src => {
         const img = document.createElement("img");
@@ -223,6 +213,3 @@
     }
   });
 </script>
-
-</body>
-</html>
