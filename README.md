@@ -16,8 +16,23 @@
     display: flex;
     height: 100vh;
     overflow: hidden;
+    background-image: url('https://media.giphy.com/media/3o7TKtnuHOHHUjR38Y/giphy.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
-
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(17,17,17,0.7);
+    z-index: 0;
+    pointer-events: none;
+  }
+  .container, .music-control {
+    position: relative;
+    z-index: 1;
+  }
   .container {
     flex: 1;
     display: flex;
@@ -26,7 +41,6 @@
     gap: 20px;
     padding: 10px;
   }
-
   .text-center {
     width: 40%;
     max-width: 600px;
@@ -43,7 +57,6 @@
     margin: 0.5rem 0;
     color: #ddd;
   }
-
   .carousel {
     width: 25%;
     height: 80vh;
@@ -53,32 +66,27 @@
     border: 2px solid #ff5c5c;
     background: #222;
   }
-
   .carousel-track {
     position: absolute;
     width: 100%;
     animation-timing-function: linear;
   }
-
   .carousel img {
     display: block;
     width: 100%;
     margin-bottom: 10px;
     border-radius: 8px;
   }
-
   .carousel-left .carousel-track {
     animation-name: scroll-up;
     animation-duration: 40s;
     animation-iteration-count: infinite;
   }
-
   .carousel-right .carousel-track {
     animation-name: scroll-down;
     animation-duration: 40s;
     animation-iteration-count: infinite;
   }
-
   @keyframes scroll-up {
     0% {
       top: 0;
@@ -87,7 +95,6 @@
       top: -50%;
     }
   }
-
   @keyframes scroll-down {
     0% {
       top: -50%;
@@ -96,12 +103,10 @@
       top: 0;
     }
   }
-
   .music-control {
     position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 20px;
+    right: 30px;
     background: #ff5c5c;
     color: white;
     border: none;
@@ -111,6 +116,7 @@
     cursor: pointer;
     box-shadow: 0 0 10px #ff5c5c;
     user-select: none;
+    z-index: 10;
   }
   .music-control:hover {
     background: #ff3a3a;
@@ -118,6 +124,11 @@
 </style>
 </head>
 <body>
+
+<!-- Botão de controle da música -->
+<button class="music-control" id="musicControl">Tocar Música</button>
+<!-- Áudio -->
+<audio id="backgroundMusic" loop preload="auto" src="https://www.dropbox.com/scl/fi/9vw0p8krii3munrdgsfzc/Melim-Um-Mundo-Ideal-De-Aladdin-Official-Video-1.mp3?rlkey=ycq1iukki2b3tdh8qnbzs9xah&st=wz86fxn3&raw=1"></audio>
 
 <div class="container">
 
@@ -149,12 +160,6 @@
   </div>
 
 </div>
-
-<!-- Botão de controle da música -->
-<button class="music-control" id="musicControl">Tocar Música</button>
-
-<!-- Áudio -->
-<audio id="backgroundMusic" loop preload="auto" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
 
 <script>
   // Links das imagens no formato direto do imgur
@@ -222,6 +227,3 @@
     }
   });
 </script>
-
-</body>
-</html>
