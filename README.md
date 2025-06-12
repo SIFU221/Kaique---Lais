@@ -3,147 +3,229 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kaique ❤️ Laís - Carrossel Duplo</title>
+  <title>Kaique ❤️ Laís</title>
   <style>
-    /* Reset básico */
-    * {
-      box-sizing: border-box;
-    }
     body {
-      margin: 0; 
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       background: linear-gradient(to right, #ffdde1, #ee9ca7);
+      margin: 0;
+      padding: 20px;
       color: #333;
-      height: 100vh;
+      overflow-x: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
-    }
-
-    /* Container principal */
-    .container {
-      display: flex;
-      max-width: 1200px;
-      width: 100%;
-      height: 80vh;
+      height: 100vh;
       gap: 20px;
-      background: rgba(255,255,255,0.9);
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
-    /* Estilo dos carrosseis (esquerda e direita) */
-    .carousel {
-      flex: 1;
+    .carousel-container {
+      width: 150px;
+      height: 400px;
       overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      position: relative;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      background: white;
     }
-    .carousel-inner {
+
+    .carousel {
       display: flex;
       flex-direction: column;
-      gap: 10px;
       animation-timing-function: linear;
       animation-iteration-count: infinite;
+      animation-name: scroll;
+      animation-duration: 45s;
+      gap: 10px;
+      padding: 10px 0;
     }
-    /* animação carrossel esquerdo sobe */
-    .left .carousel-inner {
-      animation-name: scrollUp;
-      animation-duration: 40s;
+
+    .carousel.right {
+      animation-direction: reverse;
     }
-    /* animação carrossel direito desce */
-    .right .carousel-inner {
-      animation-name: scrollDown;
-      animation-duration: 40s;
-    }
-    @keyframes scrollUp {
+
+    @keyframes scroll {
       0% { transform: translateY(0); }
       100% { transform: translateY(-50%); }
     }
-    @keyframes scrollDown {
-      0% { transform: translateY(-50%); }
-      100% { transform: translateY(0); }
-    }
-    /* imagens do carrossel */
-    .carousel-inner img {
-      width: 100%;
-      border-radius: 8px;
-      object-fit: cover;
+
+    .carousel img {
+      width: 120px;
       height: 120px;
+      object-fit: cover;
+      border-radius: 15px;
       user-select: none;
       pointer-events: none;
     }
 
-    /* Coluna de texto central */
-    .text-center {
-      flex: 1.5;
-      padding: 0 20px;
+    .center-content {
+      max-width: 600px;
+      background: #fff;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      text-align: center;
-      font-size: 1.1rem;
-      line-height: 1.5;
-    }
-    .text-center h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #d6336c;
+      justify-content: space-between;
+      height: 400px;
+      overflow-y: auto;
     }
 
-    /* Responsividade simples */
-    @media (max-width: 900px) {
-      .container {
-        flex-direction: column;
-        height: auto;
-      }
-      .carousel, .text-center {
-        width: 100%;
-        flex: none;
-      }
-      .carousel-inner img {
-        height: 100px;
-      }
-      .text-center h1 {
-        font-size: 2rem;
-      }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 0.3em;
+      color: #e91e63;
+    }
+
+    .declaration p {
+      margin: 10px 0;
+      line-height: 1.4em;
+      font-size: 1.1em;
+      color: #333;
+    }
+
+    .counter {
+      font-size: 1.3em;
+      margin: 15px 0 25px 0;
+      font-weight: bold;
+      color: #555;
+    }
+
+    .whatsapp-button {
+      display: inline-block;
+      padding: 15px 30px;
+      background: #25D366;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 50px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: background 0.3s;
+      margin-bottom: 15px;
+    }
+
+    .whatsapp-button:hover {
+      background: #1ebc59;
+    }
+
+    footer {
+      font-size: 0.8em;
+      color: #777;
+      margin-top: 10px;
+    }
+
+    #qrcode {
+      margin-top: 10px;
+      display: inline-block;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <div class="carousel left" aria-label="Carrossel de fotos esquerda">
-      <div class="carousel-inner" id="left-carousel">
-        <!-- Imagens esquerda serão inseridas aqui -->
-      </div>
+  <!-- Carrossel esquerda -->
+  <div class="carousel-container">
+    <div class="carousel left" id="carousel-left">
+      <!-- Imagens adicionadas via JS -->
     </div>
+  </div>
 
-    <div class="text-center">
-      <h1>Kaique ❤️ Laís</h1>
+  <!-- Conteúdo central -->
+  <div class="center-content">
+    <h1>Kaique ❤️ Laís</h1>
+
+    <div class="declaration">
       <p>Nem no meu melhor sonho eu poderia imaginar que você voltaria para a minha vida e que, junto com você, viria uma revolução dentro de mim.</p>
       <p>Você me fez crescer, me fez evoluir como homem. Você se tornou a minha base, meu pilar mais forte e mais importante.</p>
       <p>Hoje, é impossível imaginar a vida sem o seu amor, sem o seu carinho, o seu desejo, a sua energia. Ao seu lado vivi momentos incríveis que jamais pensei que um dia teria.</p>
       <p>Com você, eu aprendi o que é amar com toda a minha essência.</p>
       <p>Tudo o que mais quero agora é construir um novo mundo com você. Um mundo só nosso.</p>
       <p>Nesses últimos anos, eu cresci tanto... e grande parte dessa evolução foi por sua causa por ter encontrado o amor da minha vida.</p>
-      <p>Com você, eu descobri sentimentos novos, prazeres únicos, alegrias profundas. E hoje eu anseio por tudo que ainda vamos viver, pelo futuro lindo que estamos construindo juntos.</p>
-      <p>Eu te amo com toda a minha existência, Laís. 💖</p>
+      <p>Com você, eu descobri sentimentos novos, prazeres únicos, alegrias profundas.</p>
+      <p>E hoje eu anseio por tudo que ainda vamos viver, pelo futuro lindo que estamos construindo juntos.</p>
+      <p>Como diz a nossa música: "Um mundo ideal". E esse mundo, com você ao meu lado, é belo. É sereno. É tranquilo. É magnífico.</p>
+      <p>Eu te amo com toda a minha existência, Laís.</p>
+      <p>Feliz Dia dos Namorados, minha pequena. 💖</p>
     </div>
 
-    <div class="carousel right" aria-label="Carrossel de fotos direita">
-      <div class="carousel-inner" id="right-carousel">
-        <!-- Imagens direita serão inseridas aqui -->
-      </div>
+    <div class="counter">
+      Estamos juntos há <span id="daysTogether">...</span>
+    </div>
+
+    <a href="https://wa.me/seunumerodetelefone" target="_blank" class="whatsapp-button">💬 Enviar mensagem no WhatsApp</a>
+
+    <div id="qrcode"></div>
+  </div>
+
+  <!-- Carrossel direita -->
+  <div class="carousel-container">
+    <div class="carousel right" id="carousel-right">
+      <!-- Imagens adicionadas via JS -->
     </div>
   </div>
 
+  <!-- Música autoplay -->
+  <audio autoplay loop>
+    <source src="https://drive.google.com/uc?export=download&id=1IOdCm2ewNLEV9pmfPtMeFXaYV75U6AKT" type="audio/mpeg" />
+    Seu navegador não suporta o elemento de áudio.
+  </audio>
+
+  <!-- QR Code library -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
   <script>
-    // IDs das imagens do Google Drive (30 imagens)
-    const images = [
+    // Atualiza o contador
+    function updateCounter() {
+      const startDate = new Date(2023, 0, 4, 0, 0, 0); // 04/01/2023 início do namoro
+      const now = new Date();
+
+      let years = now.getFullYear() - startDate.getFullYear();
+      let months = now.getMonth() - startDate.getMonth();
+      let days = now.getDate() - startDate.getDate();
+      let hours = now.getHours() - startDate.getHours();
+      let minutes = now.getMinutes() - startDate.getMinutes();
+      let seconds = now.getSeconds() - startDate.getSeconds();
+
+      if (seconds < 0) {
+        seconds += 60;
+        minutes--;
+      }
+      if (minutes < 0) {
+        minutes += 60;
+        hours--;
+      }
+      if (hours < 0) {
+        hours += 24;
+        days--;
+      }
+      if (days < 0) {
+        const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+        days += prevMonth.getDate();
+        months--;
+      }
+      if (months < 0) {
+        months += 12;
+        years--;
+      }
+
+      document.getElementById('daysTogether').textContent =
+        `${years} ano${years !== 1 ? 's' : ''}, ` +
+        `${months} mês${months !== 1 ? 'es' : ''}, ` +
+        `${days} dia${days !== 1 ? 's' : ''}, ` +
+        `${hours} hora${hours !== 1 ? 's' : ''}, ` +
+        `${minutes} minuto${minutes !== 1 ? 's' : ''} e ` +
+        `${seconds} segundo${seconds !== 1 ? 's' : ''}`;
+    }
+    updateCounter();
+    setInterval(updateCounter, 1000);
+
+    // QR Code com link do WhatsApp
+    const phoneNumber = "seunumerodetelefone"; // Troque pelo seu número com DDI e DDD, ex: 5511999999999
+    const whatsappUrl = `https://wa.me/${phoneNumber}`;
+    QRCode.toCanvas(document.getElementById('qrcode'), whatsappUrl, { width: 120 }, function (error) {
+      if (error) console.error(error);
+    });
+
+    // Array com os IDs das imagens (30 imagens)
+    const imagesLeft = [
       "1b4_jjHmz3uvtuJ-ioPT_CWk8UGQFsTZh",
       "1LE1hU7avGLPktt-43mbScU2VzVghuX1v",
       "1QZLaCkWeiJMu4e7USNvTIrpEb6ZDU4hh",
@@ -158,7 +240,10 @@
       "1XZBFhMqqR5JqHO31thaSBRCqi3sVQ6tN",
       "15LBdyWxILbUnPzrzcEJLf0ePz_xs8AGR",
       "1KtPu1pWqby3jsOIB7bQIRT5wuBl7OfOZ",
-      "1OXHWaHBQX54H_5FKiR6gtZwTR9vDJkLC",
+      "1OXHWaHBQX54H_5FKiR6gtZwTR9vDJkLC"
+    ];
+
+    const imagesRight = [
       "1UlxOsaTX8BSakrUW6m_Xxt01d8GGB64m",
       "1Yt0C2NYFwjgnyf9tQSvVtRt_7UhzU0cN",
       "1vHKt_gAJRJOv3VjcrjoaL-rTMm1caf6Y",
@@ -173,27 +258,24 @@
       "1bsyIy-wWIEkZZeRtKs21jsalRYMoewvq",
       "1ibtGOSzMTsaQPM_HKgAnnEuvt-bJk01I",
       "1oUSl0UGqN-OZCS7_trn09nMKdQ90h9xH",
-      "1pWHYJXlmec4hZtDkAn2cJu-C_Iq5rwzj",
-      "1pG1QSqNbOmpd2lJwfAXsA54tTRF21ntm",
-      "14x8v6g2mlxtvp0M3a9pZ44XKhyS2HRfR"
+      "1pWHYJXlmec4hZtDkAn2cJu-C_Iq5rwzj"
     ];
 
-    // Divide em 2 grupos de 15 imagens para os carrosséis da esquerda e direita
-    const leftImages = images.slice(0, 15);
-    const rightImages = images.slice(15, 30);
-
-    // Função para criar tag img com URL direta do Google Drive
-    function createImgTag(id) {
-      return `<img src="https://drive.google.com/uc?export=view&id=${id}" loading="lazy" alt="Foto do casal" />`;
+    // Função para adicionar imagens no carrossel
+    function addImagesToCarousel(carouselId, images) {
+      const carousel = document.getElementById(carouselId);
+      // Dupla repetição para animação infinita suave
+      const allImages = images.concat(images);
+      allImages.forEach(id => {
+        const img = document.createElement('img');
+        img.src = `https://drive.google.com/uc?export=download&id=${id}`;
+        img.alt = "Foto";
+        carousel.appendChild(img);
+      });
     }
 
-    // Inserir imagens duplicadas para loop suave
-    const leftCarousel = document.getElementById("left-carousel");
-    leftCarousel.innerHTML = leftImages.map(createImgTag).join('') + leftImages.map(createImgTag).join('');
-
-    const rightCarousel = document.getElementById("right-carousel");
-    rightCarousel.innerHTML = rightImages.map(createImgTag).join('') + rightImages.map(createImgTag).join('');
+    addImagesToCarousel('carousel-left', imagesLeft);
+    addImagesToCarousel('carousel-right', imagesRight);
   </script>
-
 </body>
 </html>
