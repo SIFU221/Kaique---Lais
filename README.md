@@ -1,1 +1,107 @@
-# Kaique---Lais
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kaique ❤️ Laís</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to right, #ffdde1, #ee9ca7);
+      margin: 0;
+      padding: 20px;
+      color: #333;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 0.3em;
+    }
+    .counter {
+      font-size: 2em;
+      margin-bottom: 1em;
+    }
+    .declaration {
+      background: #fff;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-bottom: 2em;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .whatsapp-button {
+      display: inline-block;
+      padding: 15px 25px;
+      background: #25D366;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 50px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: background 0.3s;
+    }
+    .whatsapp-button:hover {
+      background: #1ebc59;
+    }
+    footer {
+      margin-top: 2em;
+      font-size: 0.8em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Kaique ❤️ Laís</h1>
+
+  <!-- Música do YouTube (oculta) -->
+  <div style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;">
+    <iframe width="1" height="1" src="https://www.youtube.com/embed/U38iGQeoX8g?autoplay=1&loop=1&playlist=U38iGQeoX8g" frameborder="0" allow="autoplay"></iframe>
+  </div>
+  <!-- Se quiser usar um arquivo de áudio próprio, descomente abaixo e coloque o caminho do arquivo MP3 -->
+  <!--
+  <audio src="caminho/para/musica.mp3" autoplay loop>
+    Seu navegador não suporta áudio.
+  </audio>
+  -->
+
+  <div class="declaration">
+    <p>Nem no meu melhor sonho eu poderia imaginar que você voltaria para a minha vida e que, junto com você, viria uma revolução dentro de mim.<br>
+    Você me fez crescer, me fez evoluir como homem. Você se tornou a minha base, meu pilar mais forte e mais importante.</p>
+    <p>Hoje, é impossível imaginar a vida sem o seu amor, sem o seu carinho, o seu desejo, a sua energia. Ao seu lado vivi momentos incríveis que jamais pensei que um dia teria.</p>
+    <p>Com você, eu aprendi o que é amar com toda a minha essência.</p>
+    <p>Tudo o que mais quero agora é construir um novo mundo com você. Um mundo só nosso.</p>
+    <p>Nesses últimos anos, eu cresci tanto... e grande parte dessa evolução foi por sua causa por ter encontrado o amor da minha vida.</p>
+    <p>Com você, eu descobri sentimentos novos, prazeres únicos, alegrias profundas.<br>
+    E hoje eu anseio por tudo que ainda vamos viver, pelo futuro lindo que estamos construindo juntos.</p>
+    <p>Como diz a nossa música: "Um mundo ideal". E esse mundo, com você ao meu lado, é belo. É sereno. É tranquilo. É magnífico.</p>
+    <p>Eu te amo com toda a minha existência, Laís.</p>
+    <p>Feliz Dia dos Namorados, minha pequena. 💖</p>
+  </div>
+
+  <div class="counter">
+    Estamos juntos há <span id="daysTogether">...</span> dias!
+  </div>
+
+  <div class="declaration">
+    <p>Laís, cada segundo ao seu lado transforma o mundo em um lugar mais bonito. Desde o dia 4 de janeiro de 2023, minha vida tem sido feita de sorrisos sinceros, abraços demorados e momentos que eu guardo no coração.</p>
+    <p>E agora, com o nosso noivado se aproximando, vejo com ainda mais clareza: você é o amor da minha vida. Que este contador seja só o começo da nossa história sem fim.</p>
+    <p>Te amo, hoje e sempre.</p>
+    <p>— Kaique 💍❤️</p>
+  </div>
+
+  <a class="whatsapp-button" href="https://wa.me/?text=Olha%20que%20lindo%20isso!%20https://seulink.com/kaique-e-lais" target="_blank">
+    Compartilhar no WhatsApp
+  </a>
+
+  <footer>
+    Página criada com amor ❤️
+  </footer>
+
+  <script>
+    const startDate = new Date("2023-01-04");
+    const today = new Date();
+    const diffTime = Math.abs(today - startDate);
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    document.getElementById("daysTogether").innerText = diffDays;
