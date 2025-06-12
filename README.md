@@ -207,4 +207,34 @@
     "1utWIp_-DxTDnSYGkkx0aVrdhyhfKAIbW",
     "1cerhBMfN7JXtpyJ2aExqV5YqPRv2ibGo",
     "1JtXN7D_2vjMhl2BrwKDRiMv4ZwNl9ht1",
-    "1XkEL7kLE3ELmzi-a__e2lgF
+    "1XkEL7kLE3ELmzi-a__e2lgF45iJYjpz9",
+    "1bsyIy-wWIEkZZeRtKs21jsalRYMoewvq",
+    "1ibtGOSzMTsaQPM_HKgAnnEuvt-bJk01I",
+    "1oUSl0UGqN-OZCS7_trn09nMKdQ90h9xH",
+    "1pWHYJXlmec4hZtDkAn2cJu-C_Iq5rwzj",
+    "1pG1QSqNbOmpd2lJwfAXsA54tTRF21ntm",
+    "14x8v6g2mlxtvp0M3a9pZ44XKhyS2HRfR"
+  ];
+
+  // Separar os IDs para carrossel esquerdo e direito
+  const leftImages = allImageIds.slice(0, 15);
+  const rightImages = allImageIds.slice(15);
+
+  function populateCarousel(containerId, imageIds) {
+    const container = document.getElementById(containerId);
+    // Para o scroll contínuo duplicamos a lista
+    const imgs = imageIds.concat(imageIds);
+    imgs.forEach(id => {
+      const img = document.createElement('img');
+      img.src = `https://drive.google.com/uc?export=view&id=${id}`;
+      img.alt = "Foto Kaique & Laís";
+      container.appendChild(img);
+    });
+  }
+
+  populateCarousel('carousel-left', leftImages);
+  populateCarousel('carousel-right', rightImages);
+</script>
+
+</body>
+</html>
