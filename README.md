@@ -1,150 +1,225 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Kaique ❤️ Laís</title>
 <style>
-  /* Reset e base */
-  body, html {
-    margin: 0; padding: 0;
-    height: 100%;
-    font-family: Arial, sans-serif;
-    color: white;
-    overflow: hidden;
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
     background: #111;
-    position: relative;
+    color: #eee;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
   }
 
-  /* Container principal: centraliza o texto */
-  .content {
-    position: relative;
-    z-index: 10;
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    background: rgba(0,0,0,0.7);
-    border-radius: 15px;
-    top: 50%;
-    transform: translateY(-50%);
+  .container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .text-center {
+    width: 40%;
+    max-width: 600px;
     text-align: center;
-  }
-
-  .content h1 {
-    font-size: 3rem;
-    color: #ff3366;
-    margin-bottom: 20px;
-  }
-  .content p {
-    font-size: 1.1rem;
     line-height: 1.5;
-    margin: 10px 0;
+  }
+  .text-center h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #ff5c5c;
+  }
+  .text-center p {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+    color: #ddd;
   }
 
-  #play-button {
-    margin-top: 25px;
-    padding: 12px 30px;
-    font-size: 1.2rem;
-    background: #ff3366;
+  .carousel {
+    width: 25%;
+    height: 80vh;
+    overflow: hidden;
+    position: relative;
+    border-radius: 12px;
+    border: 2px solid #ff5c5c;
+    background: #222;
+  }
+
+  .carousel-track {
+    position: absolute;
+    width: 100%;
+    animation-timing-function: linear;
+  }
+
+  .carousel img {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 8px;
+  }
+
+  .carousel-left .carousel-track {
+    animation-name: scroll-up;
+    animation-duration: 40s;
+    animation-iteration-count: infinite;
+  }
+
+  .carousel-right .carousel-track {
+    animation-name: scroll-down;
+    animation-duration: 40s;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes scroll-up {
+    0% {
+      top: 0;
+    }
+    100% {
+      top: -50%;
+    }
+  }
+
+  @keyframes scroll-down {
+    0% {
+      top: -50%;
+    }
+    100% {
+      top: 0;
+    }
+  }
+
+  .music-control {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff5c5c;
+    color: white;
     border: none;
+    padding: 12px 24px;
+    font-size: 1.2rem;
     border-radius: 30px;
     cursor: pointer;
-    color: white;
-    transition: background 0.3s ease;
+    box-shadow: 0 0 10px #ff5c5c;
+    user-select: none;
   }
-  #play-button:hover {
-    background: #e62e5c;
-  }
-
-  /* Fundo animado */
-  .background-carousel {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    overflow: hidden;
-    z-index: 1;
-    pointer-events: none; /* Para clicar no texto sem interferência */
-  }
-  .track {
-    display: flex;
-    flex-direction: column;
-    animation: scrollVertical 60s linear infinite;
-    height: 200%;
-  }
-  .track img {
-    width: 100vw;
-    height: auto;
-    opacity: 0.2;
-    object-fit: cover;
-  }
-  @keyframes scrollVertical {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-50%); }
+  .music-control:hover {
+    background: #ff3a3a;
   }
 </style>
 </head>
 <body>
 
-<div class="background-carousel">
-  <div class="track" id="background-track"></div>
+<div class="container">
+
+  <!-- Carrossel esquerdo -->
+  <div class="carousel carousel-left">
+    <div class="carousel-track" id="carouselLeft">
+      <!-- imagens serão inseridas pelo JS -->
+    </div>
+  </div>
+
+  <!-- Texto central -->
+  <div class="text-center">
+    <h1>Kaique ❤️ Laís</h1>
+    <p>Nem no meu melhor sonho eu poderia imaginar que você voltaria para a minha vida e que, junto com você, viria uma revolução dentro de mim.</p>
+    <p>Você me fez crescer, me fez evoluir como homem. Você se tornou a minha base, meu pilar mais forte e mais importante.</p>
+    <p>Hoje, é impossível imaginar a vida sem o seu amor, sem o seu carinho, o seu desejo, a sua energia. Ao seu lado vivi momentos incríveis que jamais pensei que um dia teria.</p>
+    <p>Com você, eu aprendi o que é amar com toda a minha essência.</p>
+    <p>Tudo o que mais quero agora é construir um novo mundo com você. Um mundo só nosso.</p>
+    <p>Nesses últimos anos, eu cresci tanto... e grande parte dessa evolução foi por sua causa por ter encontrado o amor da minha vida.</p>
+    <p>Com você, eu descobri sentimentos novos, prazeres únicos, alegrias profundas. E hoje eu anseio por tudo que ainda vamos viver, pelo futuro lindo que estamos construindo juntos.</p>
+    <p>Eu te amo com toda a minha existência, Laís. 💖</p>
+  </div>
+
+  <!-- Carrossel direito -->
+  <div class="carousel carousel-right">
+    <div class="carousel-track" id="carouselRight">
+      <!-- imagens serão inseridas pelo JS -->
+    </div>
+  </div>
+
 </div>
 
-<div class="content">
-  <h1>Kaique ❤️ Laís</h1>
-  <p>Nem no meu melhor sonho eu poderia imaginar que você voltaria para a minha vida e que, junto com você, viria uma revolução dentro de mim.</p>
-  <p>Você me fez crescer, me fez evoluir como homem. Você se tornou a minha base, meu pilar mais forte e mais importante.</p>
-  <p>Hoje, é impossível imaginar a vida sem o seu amor, sem o seu carinho, o seu desejo, a sua energia. Ao seu lado vivi momentos incríveis que jamais pensei que um dia teria.</p>
-  <p>Com você, eu aprendi o que é amar com toda a minha essência.</p>
-  <p>Tudo o que mais quero agora é construir um novo mundo com você. Um mundo só nosso.</p>
-  <p>Nesses últimos anos, eu cresci tanto... e grande parte dessa evolução foi por sua causa por ter encontrado o amor da minha vida.</p>
-  <p>Com você, eu descobri sentimentos novos, prazeres únicos, alegrias profundas. E hoje eu anseio por tudo que ainda vamos viver, pelo futuro lindo que estamos construindo juntos.</p>
-  <p>Eu te amo com toda a minha existência, Laís. 💖</p>
+<!-- Botão de controle da música -->
+<button class="music-control" id="musicControl">Tocar Música</button>
 
-  <button id="play-button">▶️ Tocar música</button>
-</div>
-
-<audio id="music" loop>
-  <source src="https://drive.google.com/uc?export=download&id=1IOdCm2ewNLEV9pmfPtMeFXaYV75U6AKT" type="audio/mpeg" />
-  Seu navegador não suporta áudio.
-</audio>
+<!-- Áudio -->
+<audio id="backgroundMusic" loop preload="auto" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
 
 <script>
-  const imageIds = [
-    "1b4_jjHmz3uvtuJ-ioPT_CWk8UGQFsTZh",
-    "1TECYPXZOjPT_81S8Ln0LBs7-VIGs4vKO",
-    "1vBa7L-JD94slg6Oj37lKVNBHAciGFSpV",
-    "1LE1hU7avGLPktt-43mbScU2VzVghuX1v",
-    "1W5bB8HedOE04oje2491V-ns0MNdDHSXh",
-    "1DN7ild0A5qManalSEOP6eXtWal2bOHzX",
-    "1dnYGFg0YiNHDEgzV9a8GFSwAAbl4YD2u",
-    "1EycDhYHKZjzD057xpZG84TIZ-Vnw9q8e",
-    "15LBdyWxILbUnPzrzcEJLf0ePz_xs8AGR",
-    "1KtPu1pWqby3jsOIB7bQIRT5wuBl7OfOZ",
-    "1UlxOsaTX8BSakrUW6m_Xxt01d8GGB64m",
-    "1Yt0C2NYFwjgnyf9tQSvVtRt_7UhzU0cN",
-    "1yBVoej6KxXHRwiSj5L9_vrso_vB7gJFS",
-    "1WTWiEhPPNdMS_7j_o0j1upBBIHCTpK6t",
-    "1QZLaCkWeiJMu4e7USNvTIrpEb6ZDU4hh"
+  // Links das imagens no formato direto do imgur
+  const images = [
+    "https://i.imgur.com/OGCNObf.jpg",
+    "https://i.imgur.com/QrxCQYZ.jpg",
+    "https://i.imgur.com/RufdWSR.jpg",
+    "https://i.imgur.com/RlIF1sK.jpg",
+    "https://i.imgur.com/R2wL5H6.jpg",
+    "https://i.imgur.com/7x0hdlW.jpg",
+    "https://i.imgur.com/r12nESz.jpg",
+    "https://i.imgur.com/YH7Stcq.jpg",
+    "https://i.imgur.com/Mf2PaKr.jpg",
+    "https://i.imgur.com/zfEhgOB.jpg",
+    "https://i.imgur.com/gZ6sU4N.jpg",
+    "https://i.imgur.com/q5ctADZ.jpg",
+    "https://i.imgur.com/CHlBB48.jpg",
+    "https://i.imgur.com/zkxVjOD.jpeg",
+    "https://i.imgur.com/lN6A0he.jpg",
+    "https://i.imgur.com/0fqR5LE.jpg",
+    "https://i.imgur.com/LL2dyYp.jpg",
+    "https://i.imgur.com/wfpjpKS.jpg",
+    "https://i.imgur.com/qnbJBwE.jpg",
+    "https://i.imgur.com/7J1qygj.jpg",
+    "https://i.imgur.com/bVtMlfL.jpg",
+    "https://i.imgur.com/E4VrsgP.jpg",
+    "https://i.imgur.com/Rui2F0V.jpg",
+    "https://i.imgur.com/rsTSd31.jpg",
+    "https://i.imgur.com/Qn3UQLo.jpg",
+    "https://i.imgur.com/f7V0ZMR.jpg",
+    "https://i.imgur.com/a9POCb4.jpg",
+    "https://i.imgur.com/LRlXQYh.jpg",
+    "https://i.imgur.com/n1L9jpu.jpg",
+    "https://i.imgur.com/bVX9ANW.jpg",
+    "https://i.imgur.com/bdDQcZS.jpg",
+    "https://i.imgur.com/zSgqCh8.jpg"
   ];
 
-  const track = document.getElementById('background-track');
-
-  // Carrega duas vezes para loop suave
-  function loadImages() {
-    [...imageIds, ...imageIds].forEach(id => {
-      const img = document.createElement('img');
-      img.src = `https://drive.google.com/uc?export=download&id=${id}`;
-      track.appendChild(img);
-    });
+  function populateCarousel(containerId) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = "";
+    for(let i=0; i<2; i++) {
+      images.forEach(src => {
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = "Foto Kaique e Laís";
+        container.appendChild(img);
+      });
+    }
   }
-  loadImages();
 
-  // Música
-  const music = document.getElementById('music');
-  const playBtn = document.getElementById('play-button');
+  populateCarousel("carouselLeft");
+  populateCarousel("carouselRight");
 
-  playBtn.addEventListener('click', () => {
-    music.play().catch(() => alert('Erro ao tocar a música'));
-    playBtn.style.display = 'none';
+  const music = document.getElementById("backgroundMusic");
+  const btn = document.getElementById("musicControl");
+
+  btn.addEventListener("click", () => {
+    if(music.paused) {
+      music.play();
+      btn.textContent = "Pausar Música";
+    } else {
+      music.pause();
+      btn.textContent = "Tocar Música";
+    }
   });
 </script>
 
