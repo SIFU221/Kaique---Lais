@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kaique & Laís - Carrossel de Fotos</title>
+  <title>Kaique & Laís - Carrossel Fotos & Texto</title>
   <style>
     body {
       margin: 0;
@@ -15,7 +15,7 @@
       overflow: hidden;
       align-items: center;
       justify-content: center;
-      gap: 40px;
+      gap: 30px;
       padding: 20px;
     }
 
@@ -27,6 +27,7 @@
       box-shadow: 0 0 20px rgba(255,255,255,0.2);
       position: relative;
       background: #222;
+      flex-shrink: 0;
     }
 
     .carousel {
@@ -36,7 +37,7 @@
       animation-timing-function: linear;
     }
 
-    /* esquerda sobe, direita desce */
+    /* Animações para scroll vertical */
     .carousel.left {
       animation-name: scrollUp;
       animation-duration: 30s;
@@ -64,17 +65,19 @@
       object-fit: cover;
       border-bottom: 3px solid #444;
       user-select: none;
+      pointer-events: none;
     }
 
     .center-text {
       max-width: 600px;
       padding: 30px 20px;
-      background: rgba(30, 30, 30, 0.8);
+      background: rgba(30, 30, 30, 0.85);
       border-radius: 15px;
       box-shadow: 0 0 20px rgba(255,255,255,0.1);
       text-align: center;
       overflow-y: auto;
       max-height: 400px;
+      flex-shrink: 1;
     }
 
     .center-text h1 {
@@ -89,7 +92,7 @@
       line-height: 1.5;
     }
 
-    /* Scrollbar estilizada para o texto */
+    /* Scrollbar personalizada */
     .center-text::-webkit-scrollbar {
       width: 8px;
     }
@@ -98,13 +101,13 @@
       border-radius: 4px;
     }
 
-    /* Responsividade básica */
+    /* Responsividade */
     @media (max-width: 1000px) {
       body {
         flex-direction: column;
-        gap: 30px;
         height: auto;
         padding: 40px 10px;
+        gap: 30px;
       }
       .carousel-container {
         width: 90vw;
@@ -121,10 +124,9 @@
   </style>
 </head>
 <body>
+
   <div class="carousel-container">
-    <div class="carousel left" id="carousel-left">
-      <!-- Imagens esquerda vão aqui -->
-    </div>
+    <div class="carousel left" id="carousel-left"></div>
   </div>
 
   <div class="center-text">
@@ -140,13 +142,11 @@
   </div>
 
   <div class="carousel-container">
-    <div class="carousel right" id="carousel-right">
-      <!-- Imagens direita vão aqui -->
-    </div>
+    <div class="carousel right" id="carousel-right"></div>
   </div>
 
 <script>
-  // Aqui você coloca as URLs das suas imagens, separadas em dois arrays:
+  // URLs das imagens — verifique se estão "Públicas" no Google Drive!
   const leftImages = [
     'https://drive.google.com/uc?export=view&id=1b4_jjHmz3uvtuJ-ioPT_CWk8UGQFsTZh',
     'https://drive.google.com/uc?export=view&id=1TECYPXZOjPT_81S8Ln0LBs7-VIGs4vKO',
@@ -171,7 +171,7 @@
 
   function populateCarousel(carouselId, images) {
     const carousel = document.getElementById(carouselId);
-    // Repetir as imagens para que o carrossel fique contínuo
+    // Duplica as imagens para o efeito contínuo
     const imagesRepeated = images.concat(images);
     imagesRepeated.forEach(src => {
       const img = document.createElement('img');
@@ -184,5 +184,6 @@
   populateCarousel('carousel-left', leftImages);
   populateCarousel('carousel-right', rightImages);
 </script>
+
 </body>
 </html>
