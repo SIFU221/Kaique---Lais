@@ -27,7 +27,7 @@
   .present-box {
     background: #fff;
     border-radius: 20px;
-    padding: 40px 60px;
+    padding: 32px 24px;
     box-shadow: 0 8px 32px #000a;
     display: flex;
     flex-direction: column;
@@ -35,22 +35,23 @@
     cursor: pointer;
     transition: transform 0.2s;
     border: 4px solid #ff5c5c;
+    max-width: 90vw;
   }
   .present-box:hover {
     transform: scale(1.05);
     box-shadow: 0 12px 40px #ff5c5c88;
   }
   .present-emoji {
-    font-size: 5rem;
-    margin-bottom: 20px;
+    font-size: 4rem;
+    margin-bottom: 16px;
     animation: bounce 1.2s infinite;
   }
   @keyframes bounce {
     0%, 100% { transform: translateY(0);}
-    50% { transform: translateY(-20px);}
+    50% { transform: translateY(-16px);}
   }
   .present-text {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     color: #222;
     font-weight: bold;
     text-align: center;
@@ -64,33 +65,40 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
-    padding: 10px;
+    gap: 10px;
+    padding: 5px;
     min-height: 100vh;
     display: none; /* só aparece depois */
   }
   .text-center {
-    width: 40%;
+    width: 90vw;
     max-width: 600px;
     text-align: center;
     line-height: 1.5;
     font-weight: bold;
+    background: #111c;
+    border-radius: 12px;
+    margin: 0 5px;
+    padding: 10px 5px;
   }
   .text-center h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 0.5rem;
     color: #ff5c5c;
     font-weight: bold;
   }
   .text-center p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin: 0.5rem 0;
     color: #ddd;
     font-weight: bold;
   }
   .carousel {
-    width: 25%;
-    height: 80vh;
+    width: 30vw;
+    min-width: 110px;
+    max-width: 160px;
+    height: 60vh;
+    min-height: 220px;
     overflow: hidden;
     position: relative;
     border-radius: 12px;
@@ -127,6 +135,31 @@
     0% { top: -50%; }
     100% { top: 0; }
   }
+  @media (max-width: 700px) {
+    .container {
+      flex-direction: column;
+      gap: 5px;
+      padding: 0;
+    }
+    .carousel {
+      width: 90vw;
+      max-width: 98vw;
+      height: 30vh;
+      min-height: 120px;
+      margin: 0 auto;
+    }
+    .text-center {
+      width: 98vw;
+      font-size: 0.95rem;
+      padding: 8px 2vw;
+    }
+    .text-center h1 {
+      font-size: 1.3rem;
+    }
+    .present-box {
+      padding: 24px 8vw;
+    }
+  }
 </style>
 </head>
 <body>
@@ -135,7 +168,7 @@
 <div class="present-overlay" id="presentOverlay">
   <div class="present-box" id="presentBox">
     <div class="present-emoji">🎁</div>
-    <div class="present-text">Clique no presente para abrir sua surpresa!</div>
+    <div class="present-text">Toque no presente para abrir sua surpresa!</div>
   </div>
 </div>
 
