@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8" />
@@ -11,7 +11,7 @@
     background: #000;
     color: #eee;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    height: 100vh;
+    min-height: 100vh;
     overflow: hidden;
   }
   .present-overlay {
@@ -27,7 +27,7 @@
   .present-box {
     background: #fff;
     border-radius: 20px;
-    padding: 32px 24px;
+    padding: 28px 10vw;
     box-shadow: 0 8px 32px #000a;
     display: flex;
     flex-direction: column;
@@ -42,13 +42,13 @@
     box-shadow: 0 12px 40px #ff5c5c88;
   }
   .present-emoji {
-    font-size: 4rem;
+    font-size: 3.5rem;
     margin-bottom: 16px;
     animation: bounce 1.2s infinite;
   }
   @keyframes bounce {
     0%, 100% { transform: translateY(0);}
-    50% { transform: translateY(-16px);}
+    50% { transform: translateY(-12px);}
   }
   .present-text {
     font-size: 1.1rem;
@@ -56,49 +56,23 @@
     font-weight: bold;
     text-align: center;
   }
-  .container, .music-control {
+  .container {
+    width: 100vw;
+    min-height: 100vh;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 0;
     position: relative;
     z-index: 1;
   }
-  .container {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 5px;
-    min-height: 100vh;
-    display: none; /* só aparece depois */
-  }
-  .text-center {
-    width: 90vw;
-    max-width: 600px;
-    text-align: center;
-    line-height: 1.5;
-    font-weight: bold;
-    background: #111c;
-    border-radius: 12px;
-    margin: 0 5px;
-    padding: 10px 5px;
-  }
-  .text-center h1 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    color: #ff5c5c;
-    font-weight: bold;
-  }
-  .text-center p {
-    font-size: 1rem;
-    margin: 0.5rem 0;
-    color: #ddd;
-    font-weight: bold;
-  }
   .carousel {
-    width: 30vw;
-    min-width: 110px;
-    max-width: 160px;
-    height: 60vh;
-    min-height: 220px;
+    width: 92vw;
+    max-width: 350px;
+    height: 28vh;
+    min-height: 120px;
     overflow: hidden;
     position: relative;
     border-radius: 12px;
@@ -107,6 +81,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0 auto 10px auto;
     padding: 0;
   }
   .carousel-track {
@@ -135,29 +110,54 @@
     0% { top: -50%; }
     100% { top: 0; }
   }
-  @media (max-width: 700px) {
+  .text-center {
+    width: 96vw;
+    max-width: 600px;
+    text-align: center;
+    line-height: 1.5;
+    font-weight: bold;
+    background: #111c;
+    border-radius: 12px;
+    margin: 0 auto 10px auto;
+    padding: 10px 2vw;
+  }
+  .text-center h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #ff5c5c;
+    font-weight: bold;
+  }
+  .text-center p {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    color: #ddd;
+    font-weight: bold;
+  }
+  @media (min-width: 700px) {
     .container {
-      flex-direction: column;
-      gap: 5px;
-      padding: 0;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
     }
     .carousel {
-      width: 90vw;
-      max-width: 98vw;
-      height: 30vh;
-      min-height: 120px;
-      margin: 0 auto;
+      width: 25vw;
+      min-width: 180px;
+      max-width: 300px;
+      height: 80vh;
+      min-height: 220px;
+      margin: 0;
     }
     .text-center {
-      width: 98vw;
-      font-size: 0.95rem;
-      padding: 8px 2vw;
+      width: 40vw;
+      min-width: 300px;
+      max-width: 600px;
+      font-size: 1.1rem;
+      padding: 10px 2vw;
     }
     .text-center h1 {
-      font-size: 1.3rem;
-    }
-    .present-box {
-      padding: 24px 8vw;
+      font-size: 2.5rem;
     }
   }
 </style>
