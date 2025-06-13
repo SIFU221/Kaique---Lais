@@ -5,17 +5,55 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Kaique ❤️ Laís</title>
 <style>
-  * {
-    box-sizing: border-box;
-  }
+  * { box-sizing: border-box; }
   body {
     margin: 0;
     background: #000;
     color: #eee;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
     height: 100vh;
     overflow: hidden;
+  }
+  .present-overlay {
+    position: fixed;
+    inset: 0;
+    background: #000d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    transition: opacity 0.5s;
+  }
+  .present-box {
+    background: #fff;
+    border-radius: 20px;
+    padding: 40px 60px;
+    box-shadow: 0 8px 32px #000a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+    border: 4px solid #ff5c5c;
+  }
+  .present-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px #ff5c5c88;
+  }
+  .present-emoji {
+    font-size: 5rem;
+    margin-bottom: 20px;
+    animation: bounce 1.2s infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0);}
+    50% { transform: translateY(-20px);}
+  }
+  .present-text {
+    font-size: 1.3rem;
+    color: #222;
+    font-weight: bold;
+    text-align: center;
   }
   .container, .music-control {
     position: relative;
@@ -28,6 +66,8 @@
     justify-content: center;
     gap: 20px;
     padding: 10px;
+    min-height: 100vh;
+    display: none; /* só aparece depois */
   }
   .text-center {
     width: 40%;
@@ -87,34 +127,22 @@
     0% { top: -50%; }
     100% { top: 0; }
   }
-  .music-control {
-    position: fixed;
-    top: 20px;
-    right: 30px;
-    background: #ff5c5c;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    font-size: 1.2rem;
-    border-radius: 30px;
-    cursor: pointer;
-    box-shadow: 0 0 10px #ff5c5c;
-    user-select: none;
-    z-index: 10;
-    font-weight: bold;
-  }
-  .music-control:hover {
-    background: #ff3a3a;
-  }
 </style>
 </head>
 <body>
 
-<!-- Botão de controle da música -->
-<button class="music-control" id="musicControl">Tocar Música</button>
+<!-- Caixa de presente -->
+<div class="present-overlay" id="presentOverlay">
+  <div class="present-box" id="presentBox">
+    <div class="present-emoji">🎁</div>
+    <div class="present-text">Clique no presente para abrir sua surpresa!</div>
+  </div>
+</div>
+
+<!-- Áudio -->
 <audio id="backgroundMusic" loop preload="auto" src="https://www.dropbox.com/scl/fi/9vw0p8krii3munrdgsfzc/Melim-Um-Mundo-Ideal-De-Aladdin-Official-Video-1.mp3?rlkey=ycq1iukki2b3tdh8qnbzs9xah&st=wz86fxn3&raw=1"></audio>
 
-<div class="container">
+<div class="container" id="mainContent">
 
   <!-- Carrossel esquerdo -->
   <div class="carousel carousel-left">
@@ -196,20 +224,22 @@
     }
   }
 
-  populateCarousel("carouselLeft", images); // cima para baixo
-  populateCarousel("carouselRight", [...images].reverse()); // baixo para cima
-
-  // Música
-  const music = document.getElementById("backgroundMusic");
-  const btn = document.getElementById("musicControl");
-
-  btn.addEventListener("click", () => {
-    if(music.paused) {
+  // Só mostra o conteúdo após abrir o presente
+  document.getElementById('presentBox').addEventListener('click', function() {
+    document.getElementById('presentOverlay').style.opacity = '0';
+    setTimeout(() => {
+      document.getElementById('presentOverlay').style.display = 'none';
+      document.getElementById('mainContent').style.display = 'flex';
+      // Carrosséis
+      populateCarousel("carouselLeft", images); // cima para baixo
+      populateCarousel("carouselRight", [...images].reverse()); // baixo para cima
+      // Música
+      const music = document.getElementById("backgroundMusic");
       music.play();
-      btn.textContent = "Pausar Música";
-    } else {
-      music.pause();
-      btn.textContent = "Tocar Música";
-    }
+    }, 500);
   });
+
 </script>
+
+</body>
+</html>
