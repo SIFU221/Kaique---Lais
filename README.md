@@ -5,12 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Kaique ❤️ Laís</title>
 <style>
-  * { box-sizing: border-box; }
-  body {
+  html, body {
+    height: 100%;
     margin: 0;
+    padding: 0;
+  }
+  body {
     background: #000;
     color: #eee;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 100vw;
+    height: 100vh;
     min-height: 100vh;
     min-width: 100vw;
     overflow: hidden;
@@ -67,6 +72,8 @@
     gap: 40px;
     width: 100vw;
     height: 100vh;
+    position: absolute;
+    left: 0; top: 0;
   }
   .text-center {
     width: 500px;
@@ -74,12 +81,21 @@
     text-align: center;
     line-height: 1.5;
     font-weight: bold;
+    background: #111c;
+    border-radius: 12px;
+    padding: 24px 18px;
+    border: 1px solid #444;
+    box-shadow: 0 2px 16px #0006;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .text-center h1 {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
     color: #ff5c5c;
     font-weight: bold;
+    letter-spacing: 2px;
   }
   .text-center p {
     font-size: 1.1rem;
@@ -99,6 +115,7 @@
     flex-direction: column;
     align-items: center;
     padding: 0;
+    box-shadow: 0 2px 16px #0006;
   }
   .carousel-track {
     position: absolute;
@@ -153,6 +170,7 @@
   <!-- Texto central -->
   <div class="text-center">
     <h1>Kaique ❤️ Laís</h1>
+    <hr style="border: none; border-top: 2px solid #444; margin: 10px 0 18px 0;">
     <p>Nem no meu melhor sonho eu poderia imaginar que você voltaria para a minha vida e que, junto com você, viria uma revolução dentro de mim.</p>
     <p>Você me fez crescer, me fez evoluir como homem. Você se tornou a minha base, meu pilar mais forte e mais importante.</p>
     <p>Hoje, é impossível imaginar a vida sem o seu amor, sem o seu carinho, o seu desejo, a sua energia. Ao seu lado vivi momentos incríveis que jamais pensei que um dia teria.</p>
@@ -238,3 +256,6 @@
     }, 500);
   });
 </script>
+
+</body>
+</html>
