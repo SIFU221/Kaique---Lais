@@ -5,23 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Kaique ❤️ Laís</title>
 <style>
-  html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
+  * { box-sizing: border-box; }
   body {
+    margin: 0;
     background: #000;
     color: #eee;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    width: 100vw;
     height: 100vh;
-    min-height: 100vh;
-    min-width: 100vw;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
   .present-overlay {
     position: fixed;
@@ -36,7 +27,7 @@
   .present-box {
     background: #fff;
     border-radius: 20px;
-    padding: 40px 80px;
+    padding: 40px 60px;
     box-shadow: 0 8px 32px #000a;
     display: flex;
     flex-direction: column;
@@ -44,7 +35,6 @@
     cursor: pointer;
     transition: transform 0.2s;
     border: 4px solid #ff5c5c;
-    max-width: 90vw;
   }
   .present-box:hover {
     transform: scale(1.05);
@@ -65,37 +55,32 @@
     font-weight: bold;
     text-align: center;
   }
+  .container, .music-control {
+    position: relative;
+    z-index: 1;
+  }
   .container {
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 40px;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    left: 0; top: 0;
+    gap: 20px;
+    padding: 10px;
+    min-height: 100vh;
+    display: none; /* só aparece depois */
   }
   .text-center {
-    width: 500px;
+    width: 40%;
     max-width: 600px;
     text-align: center;
     line-height: 1.5;
     font-weight: bold;
-    background: #111c;
-    border-radius: 12px;
-    padding: 24px 18px;
-    border: 1px solid #444;
-    box-shadow: 0 2px 16px #0006;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
   .text-center h1 {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
     color: #ff5c5c;
     font-weight: bold;
-    letter-spacing: 2px;
   }
   .text-center p {
     font-size: 1.1rem;
@@ -104,7 +89,7 @@
     font-weight: bold;
   }
   .carousel {
-    width: 300px;
+    width: 25%;
     height: 80vh;
     overflow: hidden;
     position: relative;
@@ -115,7 +100,6 @@
     flex-direction: column;
     align-items: center;
     padding: 0;
-    box-shadow: 0 2px 16px #0006;
   }
   .carousel-track {
     position: absolute;
@@ -158,7 +142,7 @@
 <!-- Áudio -->
 <audio id="backgroundMusic" loop preload="auto" src="https://www.dropbox.com/scl/fi/9vw0p8krii3munrdgsfzc/Melim-Um-Mundo-Ideal-De-Aladdin-Official-Video-1.mp3?rlkey=ycq1iukki2b3tdh8qnbzs9xah&st=wz86fxn3&raw=1"></audio>
 
-<div class="container" id="mainContent" style="display:none">
+<div class="container" id="mainContent">
 
   <!-- Carrossel esquerdo -->
   <div class="carousel carousel-left">
@@ -170,7 +154,6 @@
   <!-- Texto central -->
   <div class="text-center">
     <h1>Kaique ❤️ Laís</h1>
-    <hr style="border: none; border-top: 2px solid #444; margin: 10px 0 18px 0;">
     <p>Nem no meu melhor sonho eu poderia imaginar que você voltaria para a minha vida e que, junto com você, viria uma revolução dentro de mim.</p>
     <p>Você me fez crescer, me fez evoluir como homem. Você se tornou a minha base, meu pilar mais forte e mais importante.</p>
     <p>Hoje, é impossível imaginar a vida sem o seu amor, sem o seu carinho, o seu desejo, a sua energia. Ao seu lado vivi momentos incríveis que jamais pensei que um dia teria.</p>
@@ -255,6 +238,7 @@
       music.play();
     }, 500);
   });
+
 </script>
 
 </body>
